@@ -10,8 +10,8 @@ script:
   - docker-compose up -d client
 
   - docker tag mongo dextez/mongo
-  - docker tag app $DOCKER_USERNAME/app
-  - docker tag client $DOCKER_USERNAME/client
+  #- docker tag app $DOCKER_USERNAME/app
+  #- docker tag client $DOCKER_USERNAME/client
  #- docker build -t $DOCKER_USERNAME/node .
  #- docker images $DOCKER_USERNAME/node
 
