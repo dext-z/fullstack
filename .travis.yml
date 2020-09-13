@@ -9,9 +9,9 @@ script:
   - docker-compose up -d app
   - docker-compose up -d client
 
- # - docker tag mongo dextez/mongo
-  #- docker tag mongo $DOCKER_USERNAME/app
-  #- docker tag mongo $DOCKER_USERNAME/client
+  - docker tag mongo dextez/mongo
+  - docker tag app $DOCKER_USERNAME/app
+  - docker tag client $DOCKER_USERNAME/client
  #- docker build -t $DOCKER_USERNAME/node .
  #- docker images $DOCKER_USERNAME/node
 
@@ -20,11 +20,8 @@ before_deploy:
 
 deploy:
   provider: script
-  script:  docker tag mongo dextez/mongo
-   - docker tag app $DOCKER_USERNAME/app
-   - docker tag client $DOCKER_USERNAME/client 
-   - docker push $DOCKER_USERNAME/mongo
-   - docker push $DOCKER_USERNAME/app
-   - docker push $DOCKER_USERNAME/client
+  script: docker push $DOCKER_USERNAME/mongo
+   #- docker push $DOCKER_USERNAME/app
+   #- docker push $DOCKER_USERNAME/client
   on:
     branch: master
