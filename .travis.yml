@@ -7,8 +7,6 @@ script:
   - docker-compose up -d mongo
   - docker-compose up -d app
   - docker-compose up -d client
-  #- docker build -t dextez/fullstack
-  #- docker images dextez/fullstack
 
 before_deploy:
   echo "$DOCKER_PASSWORD" | - docker login -u "$DOCKER_USERNAME" --password-stdin
