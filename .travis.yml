@@ -1,19 +1,27 @@
 sudo: required
+
 services:
   - docker
 
 script:
-  - docker-compose build 
+  - docker-compose build
   - docker-compose up -d mongo
   - docker-compose up -d app
   - docker-compose up -d client
-  - docker build -t fullstack .
+
+  - docker tag mongo dextez/mongo
+  - docker tag mongo $DOCKER_USERNAME/app
+  - docker tag mongo $DOCKER_USERNAME/client
+ #- docker build -t $DOCKER_USERNAME/node .
+ #- docker images $DOCKER_USERNAME/node
 
 before_deploy:
   echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 deploy:
   provider: script
-  script: docker push $DOCKER_USERNAME/fullstack
+  script: docker push $DOCKER_USERNAME/mongo
+   - docker push $DOCKER_USERNAME/app
+   - docker push $DOCKER_USERNAME/client
   on:
     branch: master
