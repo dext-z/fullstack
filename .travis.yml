@@ -9,7 +9,7 @@ script:
   - docker-compose up -d client
 
 before_deploy:
-  echo "$DOCKER_PASSWORD" | - docker login -u "$DOCKER_USERNAME" --password-stdin
+  echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 deploy:
   provider: script
