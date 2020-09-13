@@ -3,5 +3,9 @@ services:
   - docker
 
 script:
-  - docker build -t dextez/fullstack
-  - docker images dextez/fullstack
+  - docker-compose build 
+  - docker-compose up -d mongo
+  - docker-compose up -d app
+  - docker-compose up -d api
+  #- docker build -t dextez/fullstack
+  #- docker images dextez/fullstack
