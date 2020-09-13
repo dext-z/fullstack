@@ -21,8 +21,8 @@ before_deploy:
 deploy:
   provider: script
   script:  docker tag mongo dextez/mongo
-   - docker tag mongo $DOCKER_USERNAME/app
-   - docker tag mongo $DOCKER_USERNAME/client 
+   - docker tag app $DOCKER_USERNAME/app
+   - docker tag client $DOCKER_USERNAME/client 
    - docker push $DOCKER_USERNAME/mongo
    - docker push $DOCKER_USERNAME/app
    - docker push $DOCKER_USERNAME/client
